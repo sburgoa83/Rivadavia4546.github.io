@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Av. Rivadavia 4530 2°E — Se alquila</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ====== TOKENS ====== */
+  :root{
+    --navy: #16324F;        /* azul plano/blueprint */
+    --navy-deep: #0E2338;
+    --cyan: #7FB3D5;        /* línea de plano */
+    --paper: #F7F5EF;       /* hoja de plano */
+    --paper-line: #E4E0D3;
+    --ink: #1C2B36;
+    --ink-soft: #51606B;
+    --brass: #C9A24B;       /* acento herraje */
+    --brass-deep: #A9822F;
+    --ok: #4C7A5E;
+
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --radius: 2px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  /* ====== UTIL ====== */
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brass-deep);
+  }
+  .plate-title{
+    font-family: var(--display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: var(--navy);
+  }
+
+  /* dimension-line divider — elemento firma: línea de cota tipo plano técnico */
+  .dim-line{
+    display:flex; align-items:center; gap:10px;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 12px;
+    margin: 6px 0 34px;
+    user-select:none;
+  }
+  .dim-line::before, .dim-line::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: repeating-linear-gradient(90deg, var(--ink-soft) 0 6px, transparent 6px 10px);
+    position:relative;
+  }
+  .dim-tick{
+    font-size: 13px;
+    letter-spacing: .04em;
+    white-space:nowrap;
+  }
+
+  /* ====== NAV ====== */
+  header.site-nav{
+    position: sticky; top:0; z-index: 50;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(127,179,213,.25);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding: 0 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    height: 56px;
+  }
+  .brand{
+    font-family: var(--mono);
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: .08em;
+  }
+  .brand strong{ color:#fff; font-family: var(--display); font-weight:700; letter-spacing:.02em;}
+  nav.plates{
+    display:flex; gap: 4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  nav.plates::-webkit-scrollbar{ display:none; }
+  nav.plates a{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #C9D6DE;
+    text-decoration:none;
+    padding: 8px 12px;
+    white-space:nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.plates a:hover, nav.plates a:focus-visible{
+    color: #fff;
+    border-color: var(--brass);
+    outline: none;
+  }
+
+  /* ====== HERO (cover sheet) ====== */
+  .cover{
+    background:
+      linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+    color: #EAF1F5;
+    position: relative;
+    overflow:hidden;
+    padding: 72px 0 56px;
+  }
+  .cover::before{
+    /* grilla de plano de fondo */
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(127,179,213,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,179,213,.08) 1px, transparent 1px);
+    background-size: 34px 34px;
+    pointer-events:none;
+  }
+  .cover-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 48px;
+    align-items:center;
+  }
+  .cover .eyebrow{ color: var(--cyan); }
+  .cover h1{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.12;
+    margin: 10px 0 6px;
+    letter-spacing: .01em;
+  }
+  .cover .subdir{
+    font-family: var(--mono);
+    color:#C9D6DE;
+    font-size: 14px;
+    margin-bottom: 26px;
+  }
+  .price-tag{
+    display:inline-flex; align-items:baseline; gap:10px;
+    background: var(--brass);
+    color: var(--navy-deep);
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  .price-tag .amount{ font-size: 22px; }
+  .price-tag .period{ font-size:12px; opacity:.8; }
+
+  .spec-strip{
+    display:flex; flex-wrap:wrap; gap: 0;
+    border-top: 1px solid rgba(127,179,213,.3);
+    margin-top: 8px;
+  }
+  .spec-strip div{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 14px 22px 0 0;
+    border-right: 1px solid rgba(127,179,213,.3);
+    margin-right: 22px;
+  }
+  .spec-strip div:last-child{ border-right:none; }
+  .spec-strip b{
+    display:block;
+    color:#fff;
+    font-size: 16px;
+    margin-top:2px;
+  }
+
+  .floorplan-svg{ width:100%; height:auto; }
+
+  /* CTA */
+  .btn-brass{
+    display:inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing:.03em;
+    text-decoration:none;
+    color: var(--navy-deep);
+    background: var(--brass);
+    padding: 13px 22px;
+    border-radius: var(--radius);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-brass:hover{ background:#DDB65E; transform: translateY(-1px); }
+
+  /* ====== PLATES (secciones) ====== */
+  .plate{
+    padding: 64px 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .plate-head{
+    display:flex; align-items:baseline; gap: 14px;
+    margin-bottom: 4px;
+  }
+  .plate-num{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--brass-deep);
+    border: 1px solid var(--brass-deep);
+    padding: 2px 8px;
+    border-radius: var(--radius);
+  }
+  .plate-title{ font-size: clamp(20px, 2.6vw, 28px); }
+
+  .plate-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items:center;
+  }
+  .plate-grid.reverse .art{ order:2; }
+  .plate-grid.reverse .copy{ order:1; }
+
+  .art{
+    background: #fff;
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+  .art svg{ width:100%; height:auto; display:block; }
+
+  .copy p{ color: var(--ink-soft); margin-bottom: 16px; }
+  .spec-list{
+    list-style:none;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .spec-list li{
+    display:flex; justify-content:space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--paper-line);
+  }
+  .spec-list li span:last-child{ color: var(--ink-soft); }
+
+  /* ====== UBICACIÓN ====== */
+  .location-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+  }
+  .map-frame, .sat-frame{
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    overflow:hidden;
+    background:#fff;
+  }
+  .map-frame iframe{ width:100%; height:340px; border:0; display:block; filter: grayscale(.15) contrast(1.02); }
+  .sat-frame{
+    height:340px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding: 24px;
+    background:
+      repeating-linear-gradient(45deg, #EFEBDD 0 10px, #F7F5EF 10px 20px);
+  }
+  .sat-frame .placeholder-note{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border: 1px dashed var(--brass-deep);
+    background: rgba(255,255,255,.85);
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    max-width: 260px;
+  }
+  .frame-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color: var(--ink-soft);
+    padding: 8px 12px;
+    border-top: 1px solid var(--paper-line);
+    background:#fff;
+  }
+
+  /* ====== REQUISITOS ====== */
+  .req-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 32px;
+  }
+  .req-list li{
+    display:flex; gap: 12px;
+    align-items:flex-start;
+    font-size: 15px;
+  }
+  .req-check{
+    flex: 0 0 auto;
+    width: 18px; height:18px;
+    margin-top: 2px;
+    border: 1.5px solid var(--ok);
+    border-radius: 3px;
+    position:relative;
+  }
+  .req-check::after{
+    content:"";
+    position:absolute; left:3px; top:0px;
+    width:5px; height:9px;
+    border-right: 2px solid var(--ok);
+    border-bottom: 2px solid var(--ok);
+    transform: rotate(40deg);
+  }
+  .req-note{
+    margin-top: 26px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--brass);
+    padding-left: 14px;
+  }
+
+  /* ====== FOOTER / CONTACTO ====== */
+  footer.contact{
+    background: var(--navy-deep);
+    color: #EAF1F5;
+    padding: 56px 0 40px;
+  }
+  footer.contact .eyebrow{ color: var(--cyan); }
+  footer.contact h2{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: clamp(22px, 3vw, 30px);
+    margin: 8px 0 22px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap: 14px;
+    margin-bottom: 30px;
+  }
+  .contact-detail{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #C9D6DE;
+    border-top: 1px solid rgba(127,179,213,.25);
+    padding-top: 24px;
+    display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:10px;
+  }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 860px){
+    .cover-inner{ grid-template-columns: 1fr; gap: 30px; }
+    .plate-grid, .plate-grid.reverse{ grid-template-columns: 1fr; }
+    .plate-grid.reverse .art{ order:1; }
+    .plate-grid.reverse .copy{ order:2; }
+    .location-grid{ grid-template-columns: 1fr; }
+    .req-list{ grid-template-columns: 1fr; }
+    .spec-strip div{ padding-right:14px; margin-right:14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand"><strong>AV. RIVADAVIA 4546</strong> · 2°E</div>
+    <nav class="plates" aria-label="Secciones">
+      <a href="#ubicacion">01 Ubicación</a>
+      <a href="#living">02 Living</a>
+      <a href="#cocina">03 Cocina</a>
+      <a href="#dormitorio">04 Dormitorio</a>
+      <a href="#bano">05 Baño</a>
+      <a href="#requisitos">06 Requisitos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== COVER / HERO ===================== -->
+<section class="cover">
+  <div class="wrap cover-inner">
+    <div>
+      <div class="eyebrow">Se alquila — Departamento</div>
+      <h1>Un 2 ambientes luminoso en Caballito</h1>
+      <div class="subdir">AV. RIVADAVIA 4546· Caballito, CABA</div>
+
+      <div class="price-tag">
+        <span class="amount">A CONVENIR</span>
+        <span class="period">/ mes + expensas</span>
+      </div>
+
+      <div class="spec-strip">
+        <div>Ambientes<b>2</b></div>
+        <div>Dormitorios<b>1</b></div>
+        <div>Baños<b>1</b></div>
+        <div>Superficie<b>45 m²</b></div>
+        <div>Piso<b>Doble Ascensor.</b></div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <a class="btn-brass" href="#requisitos">Ver requisitos →</a>
+      </div>
+    </div>
+
+    <div>
+      <!-- Plano de línea del departamento — reemplazable por foto real de planta si preferís -->
+      <svg class="floorplan-svg" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Plano esquemático del departamento">
+        <rect x="10" y="10" width="300" height="240" stroke="#7FB3D5" stroke-width="1.5"/>
+        <line x1="10" y1="140" x2="180" y2="140" stroke="#7FB3D5" stroke-width="1.5"/>
+        <line x1="180" y1="10" x2="180" y2="250" stroke="#7FB3D5" stroke-width="1.5"/>
+        <line x1="180" y1="170" x2="310" y2="170" stroke="#7FB3D5" stroke-width="1.5"/>
+        <!-- puerta -->
+        <path d="M10 60 A30 30 0 0 1 40 90" stroke="#C9A24B" stroke-width="1.5"/>
+        <text x="60" y="80" fill="#C9D6DE" font-family="IBM Plex Mono" font-size="10">BAÑO</text>
+        <text x="60" y="120" fill="#C9D6DE" font-family="IBM Plex Mono" font-size="10"></text>
+        <text x="205" y="60" fill="#C9D6DE" font-family="IBM Plex Mono" font-size="10">DORMITORIO</text>
+        <text x="220" y="200" fill="#C9D6DE" font-family="IBM Plex Mono" font-size="10">COCINA</text>
+        <text x="20" y="235" fill="#C9D6DE" font-family="IBM Plex Mono" font-size="10">LIVING</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 UBICACIÓN ===================== -->
+<section class="plate" id="ubicacion">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">01</span>
+      <h2 class="plate-title">Ubicación</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">Caballito, CABA</span></div>
+
+    <div class="location-grid">
+      <div class="map-frame">
+        <!-- Reemplazá el texto de búsqueda en la URL por la dirección real -->
+        <iframe
+          src="https://www.google.com/maps?q=Av.+Rivadavia+4543,+CABA&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación del departamento">
+        </iframe>
+        <div class="frame-label">Mapa interactivo</div>
+      </div>
+
+     
+          <div class="placeholder-note">
+            <img src="097819f9-a286-4392-b318-3c767d6aaa8f.png" alt="Desde_Calle">
+          </div>
+        </div>
+       
+     
+ 
+</section>
+
+<!-- ===================== 02 LIVING ===================== -->
+<section class="plate" id="living">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">02</span>
+      <h2 class="plate-title">Living</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">4.20 m × 3.10 m</span></div>
+
+    <div class="plate-grid">
+      <div class="art">
+      <img src="img/living.jpg" alt="Living">  
+       
+      </div>
+      <div class="copy">
+        <p>Espacio integrado con ventana hacia pulmon que aporta luz natural durante todo el dia y asila el sonido de la avenida. Piso de parquet  y ambiente pensado para living.</p>
+        <ul class="spec-list">
+          <li><span>Orientación</span><span>Norte</span></li>
+          <li><span>Piso</span><span>Parquet</span></li>
+          <li><span>Ventana</span><span>Doble Ventanal</span></li>
+     
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 COCINA ===================== -->
+<section class="plate" id="cocina">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">03</span>
+      <h2 class="plate-title">Cocina</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">2.40 m × 2.00 m</span></div>
+
+    <div class="plate-grid reverse">
+      <div class="art">
+         <img src="img/cocina.jpg" alt="cocina">  
+      </div>
+      <div class="copy">
+        <p>Cocina independiente con mesada de granito, cocina a gas y espacio para heladera. Bajomesada con buena capacidad de guardado.</p>
+        <ul class="spec-list">
+          <li><span>Mesada</span><span>Granito gris mara</span></li>
+          <li><span>Anafe</span><span>Cocina Nueva</span></li>
+          <li><span>Termotanque</span><span>El agua caliente es centralizada</span></li>
+          <li><span>Incluye</span><span>Muebles bajo mesada</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 DORMITORIO ===================== -->
+<section class="plate" id="dormitorio">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">04</span>
+      <h2 class="plate-title">Dormitorio</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">3.30 m × 2.80 m</span></div>
+
+    <div class="plate-grid">
+      <div class="art">
+            <img src="img/dormi.jpg" alt="cocina">  
+      </div>
+      <div class="copy">
+        <p>Dormitorio principal en suite con placard empotrado de 3 puertas. Buena aislación acústica.</p>
+        <ul class="spec-list">
+          <li><span>Placard</span><span>Empotrado, 3 puertas</span></li>
+          <li><span>Aislación</span><span>Ventana DVH</span></li>
+          <li><span>Iluminación</span><span>Natural, orientación norte</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 BAÑO ===================== -->
+<section class="plate" id="bano">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">05</span>
+      <h2 class="plate-title">Baño</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">1.80 m × 1.60 m</span></div>
+
+    <div class="plate-grid reverse">
+      <div class="art">
+            <img src="img/bano.jpg" alt="cocina">  
+      </div>
+      <div class="copy">
+        <p>Baño completo revestido en cerámica gris, con bañera y mueble bajo mesada.</p>
+        <ul class="spec-list">
+          <li><span>Sanitarios</span><span>Negro</span></li>
+          <li><span>Ducha</span><span>Bañera</span></li>
+      
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06 REQUISITOS ===================== -->
+<section class="plate" id="requisitos" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="plate-head">
+      <span class="plate-num">06</span>
+      <h2 class="plate-title">Requisitos</h2>
+    </div>
+    <div class="dim-line"><span class="dim-tick">Condiciones de alquiler</span></div>
+
+    <ul class="req-list">
+      <li><span class="req-check" aria-hidden="true"></span><span>Garantía propietaria en CABA</span></li>
+      <li><span class="req-check" aria-hidden="true"></span><span>Recibo de sueldo o constancia de ingresos, mínimo 3 veces el valor del alquiler</span></li>
+      <li><span class="req-check" aria-hidden="true"></span><span>Alternativa: seguro de caución (se aceptan)</span></li>
+      <li><span class="req-check" aria-hidden="true"></span><span>Depósito equivalente a 1 mes de alquiler</span></li>
+      <li><span class="req-check" aria-hidden="true"></span><span>Contrato bajo Ley de Alquileres vigente, plazo mínimo</span></li>
+      <li><span class="req-check" aria-hidden="true"></span><span>Se aceptan mascotas</span></li>
+    </ul>
+
+    <p class="req-note">* Requisitos sujetos a evaluación. Ante cualquier duda, escribí por WhatsApp para coordinar una visita.</p>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<footer class="contact">
+  <div class="wrap">
+    <div class="eyebrow">¿Te interesa?</div>
+    <h2>Coordinemos una visita</h2>
+    <div class="contact-row">
+      <a class="btn-brass" href="https://wa.me/5491155767602" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+ 
+    </div>
+    <div class="contact-detail">
+      <span>Av. Rivadavia 4543, 2°E — Cabalito, CABA</span>
+      <span>+54 9 11 55767602</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
